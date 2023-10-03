@@ -28,10 +28,12 @@
                                         <tr>
                                             <th>No</th>
                                             
+                                            <th>Nama Kapster</th>
                                             <th>Jumlah Potong</th>
                                             <th>Nama Customer</th>
-                                            
+                                            <th>Nama Pelayanan</th>                                           
                                             <th>Nama Produk</th>
+                                            <th>Harga Potong</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -39,9 +41,12 @@
                                         @foreach ($laporan as $result)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $result->kapster->nama_kapster }}</td>
                                                 <td>{{ $result->jumlah_potong }}</td>
                                                 <td>{{ $result->customer->nama_customer }}</td>
+                                                <td>{{ optional($result->pelayanan)->nama_pelayanan }}</td>
                                                 <td>{{ $result->produk->nama_produk }}</td>
+                                                <td>{{ optional($result->pelayanan)->harga }}</td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <a href="{{ route('laporan.edit', $result->id) }}" class="btn btn-success btn-sm"><i class="nav-icon fas fa-edit"></i> &nbsp; Edit</a>
@@ -86,10 +91,18 @@
                                                     </div>
                                                 </div>
                                             @endif
-                                           
+                                            <div class="form-group">
+                                            <label for="kapster_id">Kapster</label>
+                                            <select id="kapster_id" name="kapster_id" class="select2 form-control ">
+                                                <option value="">-- Pilih Nama Kapster --</option>
+                                                @foreach ($kapster as $data)
+                                                    <option value="{{ $data->id }}">{{ $data->nama_kapster }}</option>
+                                                @endforeach
+                                            </select>
+                                            </div>
                                             <div class="form-group">
                                                 <label for="jumlah_potong">Jumlah Potong</label>
-                                                <input type="text" id="jumlah_potong" name="jumlah_potong" class="form-control @error('jumlah_potong') is-invalid @enderror" placeholder="{{ __('Hasil') }}">
+                                                <input type="text" id="jumlah_potong" name="jumlah_potong" class="form-control @error('jumlah_potong') is-invalid @enderror" placeholder="{{ __('Jumlah Hasil Potong') }}">
                                             </div>
                                             <div class="form-group">
                                                 <label for="customer_id">Customer</label>
@@ -109,6 +122,19 @@
                                                         <option value="{{ $data->id }}">{{ $data->nama_produk }}</option>
                                                     @endforeach                
                                                 </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="pelayanan_id">Pelayanan</label>
+                                                <select id="pelayanan_id" name="pelayanan_id" class="select2 form-control ">
+                                                    <option value="">-- Pilih Nama Pelayanan --</option>
+                                                    @foreach ($pelayanan as $data)
+                                                        <option value="{{ $data->id }}">{{ $data->nama_pelayanan }}</option>
+                                                    @endforeach                
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="harga">Harga Potong</label>
+                                                <input type="text" id="harga" name="harga" class="form-control @error('harga') is-invalid @enderror" placeholder="{{ __('Harga Potong') }}">
                                             </div>
                                         </div>
                                     </div>

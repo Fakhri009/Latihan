@@ -43,12 +43,12 @@ class PelayananController extends Controller
      */
     public function store(Request $request)
     {
-     //   $this->validate($request, [
-        //    'nama_pelayanan' => 'required|unique:pelayanan',
-        //    
-       // ], [
-        //    'nama_pelayanan.unique' => 'Nama pelayanan sudah ada',
-        //]);
+        $this->validate($request, [
+            'nama_pelayanan' => 'required',
+            
+        ], [
+            'nama_pelayanan.required' => 'Nama pelayanan wajib diisi',
+        ]);
 
         Pelayanan::Create(
             [
@@ -56,6 +56,7 @@ class PelayananController extends Controller
                 'nama_pelayanan' => $request->nama_pelayanan,
                 'nama_model' => $request->nama_model,
                 'produk_id' => $request->produk_id,
+                'harga' => $request->harga,
             ]);
         
    

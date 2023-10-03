@@ -24,22 +24,23 @@ class LaporanController extends Controller
         $laporan = DB::table('laporans')
     ->leftJoin('customers', 'customers.id', '=', 'laporans.customer_id')
     ->leftJoin('produks', 'produks.id', '=', 'laporans.produk_id')
-    //->leftJoin('kapsters', 'kapsters.id', '=', 'laporans.kapster_id')
-    //->leftJoin('pelayanans', 'pelayanans.id', '=', 'laporans.pelayanan_id')
-    ->select('laporans.*', 'customers.nama_customer', 'produks.nama_produk')
+    ->leftJoin('kapsters', 'kapsters.id', '=', 'laporans.kapster_id')
+    ->leftJoin('pelayanans', 'pelayanans.id', '=', 'laporans.pelayanan_id')
+    ->select('laporans.*', 'customers.nama_customer', 'produks.nama_produk', 'pelayanans.nama_pelayanan', 'pelayanans.harga')
     ->get();
         //$laporan = Laporan::orderBy('jumlah_potong', 'asc')->get();
         //$customer = Customer::orderBy('nama_customer', 'asc')->get();
         //$produk = Produk::orderBy('nama_produk', 'asc')->get();
         //$laporan = Laporan::with(['customer', 'produk'])->orderBy('jumlah_potong', 'asc')->get();
         // return view('pages.admin.laporan.index', compact('laporan'));
-        $laporan = Laporan::with(['customer', 'produk'])->orderBy('jumlah_potong', 'asc')->get();
+        $laporan = Laporan::with(['customer', 'produk', 'kapster', 'pelayanan'])->orderBy('jumlah_potong', 'asc')->get();
         $customer = Customer::orderBy('nama_customer', 'asc')->get();
         $produk = Produk::orderBy('nama_produk', 'asc')->get();
-       // $kapster = Kapster::orderBy('nama_kapster', 'asc')->get();
-        //$pelayanan = Pelayanan::orderBy('nama_pelayanan', 'asc')->get();
+        $kapster = Kapster::orderBy('nama_kapster', 'asc')->get();
+        $pelayanan = Pelayanan::orderBy('nama_pelayanan', 'asc')->get();
+        $pelayanan = Pelayanan::orderBy('harga', 'asc')->get();
     
-        return view('pages.admin.laporan.index', compact('laporan', 'customer', 'produk'));
+        return view('pages.admin.laporan.index', compact('laporan', 'customer', 'produk', 'kapster', 'pelayanan'));
     }
 
     /**
@@ -97,7 +98,8 @@ class LaporanController extends Controller
         $laporan = Laporan::findOrFail($id);
         $produk = Produk::all();
         $customer = Customer::all();
-        return view('pages.admin.laporan.edit', compact('laporan', 'produk', 'customer'));
+        $kapster = Kapster::all();
+        return view('pages.admin.laporan.edit', compact('laporan', 'produk', 'customer', 'kapster'));
     }
 
     /**

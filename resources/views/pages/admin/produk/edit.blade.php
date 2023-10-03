@@ -53,8 +53,9 @@
                                 <label for="harga">Harga</label>
                                 <input type="text" id="harga" name="harga" class="form-control @error('harga') is-invalid @enderror" placeholder="{{ __('Nama produk') }}" value="{{ $produk->harga ?? '' }}">
                             </div>
-                            
+                            <div class="card-footer">
                             <button type="submit" class="btn btn-primary"><i class="nav-icon fas fa-save"></i> &nbsp; Simpan Perubahan</button>
+                        </div>
                         </form>
                     </div>
                 </div>

@@ -21,7 +21,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="nama_model">Nama Model</label>
-                                    <input type="text" id="nama_model" name="nama_model" class="form-control @error('nama_model') is-invalid @enderror" placeholder="{{ __('Nama Pelayanan') }}" value="{{ $pelayanan->nama_pelayanan }}">
+                                    <input type="text" id="nama_model" name="nama_model" class="form-control @error('nama_model') is-invalid @enderror" placeholder="{{ __('Nama Model') }}" value="{{ $pelayanan->nama_model}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="produk_id">Nama Produk</label>
@@ -33,6 +33,10 @@
                                         >{{ $data->nama_produk }}</option>
                                         @endforeach
                                     </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="harga">Harga</label>
+                                    <input type="text" id="harga" name="harga" class="form-control @error('harga') is-invalid @enderror" placeholder="{{ __('Harga') }}" value="{{ $pelayanan->harga }}">
                                 </div>
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary"><i class="nav-icon fas fa-save"></i> &nbsp; Simpan Perubahan</button>

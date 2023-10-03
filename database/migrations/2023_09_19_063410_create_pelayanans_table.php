@@ -18,7 +18,9 @@ class CreatePelayanansTable extends Migration
             $table->string('nama_pelayanan');
             $table->string('nama_model');
             $table->bigInteger('produk_id')->unsigned();
+            $table->string('harga');
             $table->timestamps();
+
             // Relation table
             $table->foreign('produk_id')->references('id')->on('produks')->onDelete('cascade');
         });

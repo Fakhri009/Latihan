@@ -32,6 +32,15 @@
                                     <input type="text" id="jumlah_potong" name="jumlah_potong" class="form-control @error('jumlah_potong') is-invalid @enderror" placeholder="{{ __('Jumlah Laporan') }}" value="{{ $laporan->jumlah_potong }}">
                                 </div>
                                 <div class="form-group">
+                                <label for="kapster_id">Kapster</label>
+                                <select id="kapster_id" name="kapster_id" class="select2 form-control ">
+                                    <option value="">-- Pilih Nama Kapster --</option>
+                                    @foreach ($kapster as $data)
+                                        <option value="{{ $data->id }}">{{ $data->nama_kapster }}</option>
+                                    @endforeach
+                                </select>
+                                </div>
+                                <div class="form-group">
                                     <label for="customer_id">Nama Customer</label>
                                     <select id="customer_id" name="customer_id" class="select2bs4 form-control @error('customer_id') is-invalid @enderror">
                                         <option value="">-- Pilih Nama Customer --</option>
@@ -56,6 +65,10 @@
                                         >{{ $data->nama_produk }}</option>
                                         @endforeach
                                     </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="harga">Harga Potong</label>
+                                    <input type="text" id="harga" name="harga" class="form-control @error('harga') is-invalid @enderror" placeholder="{{ __('Harga Potong') }}">
                                 </div>
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary"><i class="nav-icon fas fa-save"></i> &nbsp; Simpan Perubahan</button>

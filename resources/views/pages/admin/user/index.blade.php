@@ -39,6 +39,7 @@
                                         <th>No</th>
                                         <th>Nama User</th>
                                         <th>Roles</th>
+                                        <th>Password</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -48,6 +49,7 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $data->name }}</td>
                                         <td>{{ $data->roles }}</td>
+                                        <td>{{ $data->password }}</td>
                                         <td>
                                             <div class="d-flex">
                                                 <form method="POST" action="{{ route('user.destroy', $data->id) }}">
@@ -107,6 +109,10 @@
                                         </div>
                                         <div class="form-group" id="noId"></div>
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="{{ __('Password') }}" value="{{ old('email') }}">
                                 </div>
                                 <div class="modal- br">
                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>

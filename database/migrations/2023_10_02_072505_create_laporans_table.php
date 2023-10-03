@@ -21,14 +21,14 @@ class CreateLaporansTable extends Migration
             $table->string('jumlah_potong');
             $table->bigInteger('produk_id')->unsigned();
             $table->bigInteger('customer_id')->unsigned();
-           // $table->bigInteger('pelayanan_id')->unsigned();
+            $table->bigInteger('pelayanan_id')->unsigned();
             $table->timestamps();
             
-            // Define foreign key constraints
+             //Define foreign key constraints
             $table->foreign('kapster_id')->references('id')->on('kapsters')->onDelete('cascade');
             $table->foreign('produk_id')->references('id')->on('produks')->onDelete('cascade');
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
-           // $table->foreign('pelayanan_id')->references('id')->on('pelayanans')->onDelete('cascade');
+            $table->foreign('pelayanan_id')->references('id')->on('pelayanans')->onDelete('cascade');
         });
     }
     

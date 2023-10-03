@@ -9,7 +9,7 @@ class Laporan extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['jumlah_potong', 'produk_id', 'customer_id', 'kapster_id'];
+    protected $fillable = ['jumlah_potong', 'produk_id', 'customer_id', 'kapster_id', 'pelayanan_id'];
 
    // public function customer()
    // {
@@ -28,10 +28,10 @@ class Laporan extends Model
         return $this->belongsTo(Kapster::class, 'kapster_id');
     }
     
-   // public function pelayanan()
-   // {
-   //     return $this->belongsTo(Pelayanan::class, 'pelayanan_id');
-  //  }
+    public function pelayanan()
+    {
+        return $this->belongsTo(Pelayanan::class, 'pelayanan_id');
+    }
 }
 
 

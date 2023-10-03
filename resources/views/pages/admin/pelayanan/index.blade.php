@@ -30,6 +30,7 @@
                                         <th>Nama Pelayanan</th>
                                         <th>Nama Model</th>
                                         <th>Nama Produk</th>
+                                        <th>Harga</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -40,7 +41,9 @@
                                         <td>{{ $data->nama_pelayanan }}</td>
                                         <td>{{ $data->nama_model }}</td>
                                         <td>{{ $data->produk->nama_produk }}</td> 
+                                        <td>{{ $data->harga }}</td>
                                         <td>
+                                            
                                             <div class="d-flex">
                                                 <a href="{{ route('pelayanan.edit', Crypt::encrypt($data->id)) }}" class="btn btn-success btn-sm"><i class="nav-icon fas fa-edit"></i> &nbsp; Edit</a>
                                                 <form method="POST" action="{{ route('pelayanan.destroy', $data->id) }}">
@@ -90,7 +93,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="nama_model">Nama Model</label>
-                                            <input type="text" id="nama_model" name="nama_model" class="form-control @error('nama_model') is-invalid @enderror" placeholder="{{ __('Nama Pelayanan') }}">
+                                            <input type="text" id="nama_model" name="nama_model" class="form-control @error('nama_model') is-invalid @enderror" placeholder="{{ __('Nama Model') }}">
                                         </div>
                                         <div class="form-group">
                                             <label for="produk_id">Produk</label>
@@ -100,6 +103,10 @@
                                                 <option value="{{ $data->id }}">{{ $data->nama_produk }}</option>
                                                 @endforeach
                                             </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="harga">Harga</label>
+                                            <input type="text" id="harga" name="harga" class="form-control @error('harga') is-invalid @enderror" placeholder="{{ __('Harga') }}">
                                         </div>
                                     </div>
                                 </div>

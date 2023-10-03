@@ -9,7 +9,7 @@ class Pelayanan extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nama_pelayanan', 'nama_model', 'produk_id'];
+    protected $fillable = ['nama_pelayanan', 'nama_model', 'produk_id', 'harga'];
 
     public function produk()
     {
